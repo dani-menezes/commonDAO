@@ -1,0 +1,8 @@
+.settings/
+.settings/*
+build/
+target/
+bin/
+.classpath
+.project
+*environment.properties
