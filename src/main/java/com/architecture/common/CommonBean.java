@@ -1,7 +1,7 @@
-package com.coffey.architecture.common;
+package com.architecture.common;
 /**
  * Interface com o contrato de um bean.
- * @author Daniel Menezes <tt>daniel.menezes@coffey.com</tt>
+ * @author Daniel Menezes <tt>daniel.afmenezes@gmail.com</tt>
  */
 public interface CommonBean {
 	

@@ -1,4 +1,4 @@
-package com.coffey.architecture.common;
+package com.architecture.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,10 +15,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import com.coffey.architecture.exception.CommonException;
+import com.architecture.exception.CommonException;
 /**
  * Responsável por provir os métodos comuns a todos os Services(DAOs) <tt>(Data access objects)</tt>.
- * @author Daniel Menezes <tt>daniel.menezes@coffey.com</tt>
+ * @author Daniel Menezes <tt>daniel.afmenezes@gmail.com</tt>
  * @param <E> Entidade relacionada
  */
 public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonDAO<E>, Serializable  {

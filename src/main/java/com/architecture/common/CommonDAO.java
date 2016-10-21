@@ -1,8 +1,8 @@
-package com.coffey.architecture.common;
+package com.architecture.common;
 
 import java.util.List;
 
-import com.coffey.architecture.exception.CommonException;
+import com.architecture.exception.CommonException;
 
 /**
  * Define o contrato das operações básicas disponíveis

@@ -1,8 +1,8 @@
-package com.coffey.architecture.exception;
+package com.architecture.exception;
 
 /**
  * Exceção generica.
- * @author Daniel Menezes <tt>daniel.menezes@coffey.com</tt>
+ * @author Daniel Menezes <tt>daniel.afmenezes@gmail.com</tt>
  */
 public class CommonException extends Exception {
 

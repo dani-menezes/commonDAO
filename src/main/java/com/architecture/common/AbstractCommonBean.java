@@ -1,4 +1,4 @@
-package com.coffey.architecture.common;
+package com.architecture.common;
 
 import java.io.Serializable;
 
