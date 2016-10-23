@@ -1,6 +1,7 @@
 package com.architecture.common;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -82,7 +83,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	 * {@inheritDoc}.
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public void deleteById( Number id) throws CommonException {
+	public void deleteById(BigInteger id) throws CommonException {
 		E obj = getEntityManager().find(getEntityClass(), id);
 		if (obj!= null){
 			this.delete(obj);
@@ -93,9 +94,9 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	 * {@inheritDoc}.
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	public void deleteByIds(List<Integer> listId) throws CommonException {
+	public void deleteByIds(List<BigInteger> listId) throws CommonException {
 		if (listId!= null && listId.size()>0){
-			for (Integer id : listId) {
+			for (BigInteger id : listId) {
 				this.deleteById(id);
 			}
 		}
@@ -106,7 +107,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	 */
 	@SuppressWarnings("unchecked")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public List<E> findByIds(List<Integer> listId) throws CommonException {
+	public List<E> findByIds(List<BigInteger> listId) throws CommonException {
 		if (listId!= null && listId.size()>0){
 			try {
 				StringBuilder jpaQl = new StringBuilder();
@@ -290,7 +291,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	 */
 	@SuppressWarnings("unchecked")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public E findById(Integer id) throws CommonException {
+	public E findById(BigInteger id) throws CommonException {
 		try{
 			StringBuilder jpaQl = new StringBuilder();
 			jpaQl.append(" SELECT entity FROM ");

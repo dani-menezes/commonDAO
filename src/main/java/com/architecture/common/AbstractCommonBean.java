@@ -1,6 +1,7 @@
 package com.architecture.common;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 /**
  * Implementa as funções básicas de um bean.
@@ -12,19 +13,19 @@ public abstract class AbstractCommonBean implements CommonBean, Serializable {
 	private static final long serialVersionUID = -2050248527788932359L;
 	
 	/** Atributo de identificação do bean. */
-	protected Integer id;
+	protected BigInteger id;
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public Integer getId() {
+	public BigInteger getId() {
 		return id;
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	public void setId(Integer id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
