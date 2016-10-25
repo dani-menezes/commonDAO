@@ -1,4 +1,4 @@
-package com.architecture.common;
+package com.architecture.rdb.common;
 
 import java.io.Serializable;
 import java.math.BigInteger;

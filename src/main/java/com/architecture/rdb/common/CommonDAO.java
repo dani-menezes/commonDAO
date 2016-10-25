@@ -1,9 +1,9 @@
-package com.architecture.common;
+package com.architecture.rdb.common;
 
 import java.math.BigInteger;
 import java.util.List;
 
-import com.architecture.exception.CommonException;
+import com.architecture.rdb.exception.CommonException;
 
 /**
  * Define o contrato das operações básicas disponíveis

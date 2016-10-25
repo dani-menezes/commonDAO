@@ -1,4 +1,4 @@
-package com.architecture.exception;
+package com.architecture.rdb.exception;
 
 /**
  * Exceção generica.

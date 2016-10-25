@@ -1,4 +1,4 @@
-package com.architecture.common;
+package com.architecture.rdb.common;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -16,7 +16,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import com.architecture.exception.CommonException;
+import com.architecture.rdb.exception.CommonException;
 /**
  * Responsável por provir os métodos comuns a todos os Services(DAOs) <tt>(Data access objects)</tt>.
  * @author Daniel Menezes <tt>daniel.afmenezes@gmail.com</tt>
