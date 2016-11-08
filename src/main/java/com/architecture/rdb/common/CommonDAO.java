@@ -1,6 +1,5 @@
 package com.architecture.rdb.common;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import com.architecture.rdb.exception.CommonException;
@@ -16,7 +15,7 @@ public interface CommonDAO<E extends CommonBean> {
 	 * @param id Identificador da entidade
 	 * @return entidade
 	 */
-	public E findById(BigInteger id) throws CommonException;
+	public E findById(Integer id) throws CommonException;
 	/**
 	 * Remove a entidade
 	 * @param E Entity a ser removida
