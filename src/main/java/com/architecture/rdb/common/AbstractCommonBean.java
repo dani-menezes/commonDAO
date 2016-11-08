@@ -1,7 +1,6 @@
 package com.architecture.rdb.common;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 /**
  * Implementa as funções básicas de um bean.
@@ -13,19 +12,19 @@ public abstract class AbstractCommonBean implements CommonBean, Serializable {
 	private static final long serialVersionUID = -2050248527788932359L;
 	
 	/** Atributo de identificação do bean. */
-	protected BigInteger id;
+	protected Integer id;
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public BigInteger getId() {
+	public Integer getId() {
 		return id;
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

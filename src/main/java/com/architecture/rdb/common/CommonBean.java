@@ -1,7 +1,6 @@
 package com.architecture.rdb.common;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 
 /**
@@ -14,12 +13,12 @@ public interface CommonBean extends Serializable {
 	 * Recupera o identificador da entidade.
 	 * @return Identificador
 	 */
-	public BigInteger getId();
+	public Integer getId();
 	
 	/**
 	 * Atribui o identificador da entidade.
 	 * @param id Identificador
 	 */
-	public void setId(BigInteger id);
+	public void setId(Integer id);
 	
 }
