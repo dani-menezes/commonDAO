@@ -12,6 +12,10 @@ public class CommonException extends Exception {
 	private String translateKey;
 	/** see {@link Throwable}. */
 	private Throwable throwable;
+	/** Code identifier of the error */
+	private String errorCode;
+	/** Message identifier of the error */
+	private String errorMessage;
 	
 	/**
 	 * Construtor default. 
@@ -28,11 +32,24 @@ public class CommonException extends Exception {
 	
 	/**
 	 * Construtor com parâmetros.
-	 * @param message
-	 * @param translateKey
+	 * @param errorCode
+	 * @param errorMessage
 	 */
-	public CommonException (String message, String translateKey) {
+	public CommonException (String errorCode, String errorMessage) {
+		this.errorCode = errorCode;
+		this.errorMessage = errorMessage;
+	}
+	
+	/**
+	 * Construtor com parâmetros.
+	 * @param translateKey
+	 * @param throwable
+	 */
+	public CommonException (String translateKey, Throwable throwable, String errorCode, String errorMessage) {
 		this.translateKey = translateKey;
+		this.throwable = throwable;
+		this.errorCode = errorCode;
+		this.errorMessage = errorMessage;
 	}
 	
 	/**
@@ -83,6 +100,34 @@ public class CommonException extends Exception {
 	 */
 	public void setThrowable(Throwable throwable) {
 		this.throwable = throwable;
+	}
+
+	/**
+	 * @return the errorCode
+	 */
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	/**
+	 * @param errorCode the errorCode to set
+	 */
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	/**
+	 * @return the errorMessage
+	 */
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	/**
+	 * @param errorMessage the errorMessage to set
+	 */
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 	
 }
