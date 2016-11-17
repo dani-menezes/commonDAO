@@ -55,7 +55,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			throw new CommonException("MESSAGE_ERROR_ENTITY_HAS_RELATIONSHIPS", ex);
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 	}
 
@@ -73,7 +73,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			this.getEntityManager().createQuery(jpaQl.toString()).executeUpdate();
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 
 	}
@@ -119,7 +119,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 				return list;
 			} catch (Exception e) {
 				this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-				throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+				throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 			}
 		}
 		return new ArrayList<E>();
@@ -153,7 +153,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			return list;
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 	}
 
@@ -176,7 +176,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			}
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 		return null;
 	}
@@ -202,7 +202,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			return count;
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 	}
 
@@ -231,7 +231,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			return count;
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 	}
 
@@ -248,7 +248,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			this.getEntityManager().getTransaction().rollback();
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 	}
 
@@ -262,7 +262,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			this.getEntityManager().flush();
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 		return newObj;
 	}
@@ -280,7 +280,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			this.getEntityManager().flush();
 		} catch (Exception e) {
 			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 		return newObj;
 	}
@@ -304,7 +304,7 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 				}
 			} catch (Exception e) {
 				this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-				throw new CommonException("MESSAGE_INTERNAL_ERROR", e);
+				throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 			}
 		return null;
 	}
