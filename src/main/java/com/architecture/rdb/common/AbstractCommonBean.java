@@ -1,32 +1,18 @@
 package com.architecture.rdb.common;
 
-import java.io.Serializable;
+import com.google.gson.Gson;
 
 /**
  * Implementa as funções básicas de um bean.
  * @author daniel.menezes
  */
-public abstract class AbstractCommonBean implements CommonBean, Serializable {
+public abstract class AbstractCommonBean implements CommonBean {
 
 	/** Generated Serial UID Version. */
 	private static final long serialVersionUID = -2050248527788932359L;
 	
 	/** Atributo de identificação do bean. */
 	protected Integer id;
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public Integer getId() {
-		return id;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * Realiza a comparação básica sobre a identificação do bean.
@@ -73,6 +59,14 @@ public abstract class AbstractCommonBean implements CommonBean, Serializable {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Overrides toString
+	 */
+	public String toString() {
+		Gson gson = new Gson();
+		return gson.toJson(this);
 	}
 
 }
