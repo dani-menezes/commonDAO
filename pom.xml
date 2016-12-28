@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.architecture.rdb.common</groupId>
 	<artifactId>commonDAO</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>

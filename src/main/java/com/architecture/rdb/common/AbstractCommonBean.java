@@ -6,7 +6,7 @@ import com.google.gson.Gson;
  * Implementa as funções básicas de um bean.
  * @author daniel.menezes
  */
-public abstract class AbstractCommonBean implements CommonBean {
+public abstract class AbstractCommonBean implements CommonBean, Comparable<AbstractCommonBean> {
 
 	/** Generated Serial UID Version. */
 	private static final long serialVersionUID = -2050248527788932359L;

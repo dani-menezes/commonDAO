@@ -2,9 +2,7 @@ package com.architecture.rdb.common;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -79,7 +77,9 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	}
 
 	/**
-	 * {@inheritDoc}.
+	 * Delete the entity by id
+	 * @param id Identification
+	 * @throws CommonException When exceptions occur
 	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void deleteById(Integer id) throws CommonException {
@@ -92,6 +92,11 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	/**
 	 * {@inheritDoc}.
 	 */
+	/**
+	 * Delete the entities by Id list
+	 * @param listId List of entities identification 
+	 * @throws CommonException When exceptions occur
+	 */
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void deleteByIds(List<Integer> listId) throws CommonException {
 		if (listId!= null && listId.size()>0){
@@ -102,7 +107,10 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	}
 
 	/**
-	 * {@inheritDoc}.
+	 * Find the entities that the id is present in Id`s list
+	 * @param listId List of identifications
+	 * @return List of entities
+	 * @throws CommonException When exceptions occur
 	 */
 	@SuppressWarnings("unchecked")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -126,14 +134,19 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	}
 
 	/**
-	 * {@inheritDoc}.
+	 * Return all entities
+	 * @return List of all entities
+	 * @throws CommonException When exceptions occur
 	 */
 	public List<E> findAll() throws CommonException {
 		return this.findAll(null);
 	}
 
 	/**
-	 * {@inheritDoc}.
+	 * Return all entities ordered by param orderBy
+	 * @param orderBy Column used to order the result list
+	 * @return LIst of Entities ordered by column orderBy
+	 * @throws CommonException When exceptions occur 
 	 */
 	@SuppressWarnings("unchecked")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -158,7 +171,10 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	}
 
 	/**
-	 * {@inheritDoc}.
+	 * Find the entity by name attribute
+	 * @param name Field Name
+	 * @return E entity
+	 * @throws CommonException When exceptions occur
 	 */
 	@SuppressWarnings("unchecked")
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
@@ -179,60 +195,6 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
 		}
 		return null;
-	}
-
-	/**
-	 * {@inheritDoc}.
-	 */
-	@SuppressWarnings("rawtypes")
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Integer countBy(String property , Object value) throws CommonException {
-		try {
-			StringBuilder jpaQl = new StringBuilder();
-			jpaQl.append("FROM ");
-			jpaQl.append(getEntityClass().getName());
-			jpaQl.append(" entity WHERE entity.");
-			jpaQl.append(property);
-			jpaQl.append(" = ?");
-			Integer count = 0;
-			List resultado = getEntityManager().createQuery(jpaQl.toString()).setParameter(1, property).getResultList();
-			if (resultado!= null && resultado.size()>0) {
-				count = Integer.parseInt(resultado.get(0).toString());
-			}
-			return count;
-		} catch (Exception e) {
-			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
-		}
-	}
-
-	/**
-	 * {@inheritDoc}.
-	 */
-	@SuppressWarnings("rawtypes")
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Integer countByList(Map<String,Object> properties) throws CommonException {
-		try {
-			StringBuilder jpaQl = new StringBuilder();
-			jpaQl.append("FROM ");
-			jpaQl.append(getEntityClass().getName());
-			jpaQl.append(" WHERE 1=1 ");
-			Iterator it = properties.entrySet().iterator();
-		    while (it.hasNext()) {
-		        Map.Entry map = (Map.Entry)it.next();
-		        jpaQl.append(" AND ");
-		        jpaQl.append(map.getKey() + " = " + map.getValue());
-		    }
-			Integer count = 0;
-			List resultado = getEntityManager().createQuery(jpaQl.toString()).getResultList();
-			if ( resultado!= null && resultado.size() > 0 ) {
-				count = Integer.parseInt(resultado.get(0).toString());
-			}
-			return count;
-		} catch (Exception e) {
-			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
-		}
 	}
 
 	/**
@@ -268,24 +230,6 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 	}
 
 	/**
-	 * Sobrecarga do método saveOrUpdate para desconsiderar a auditoria
-	 * @param entity E entidade envolvida
-	 * @param audit Verifica se é para realizar a auditoria
-	 * @return E entidade persistida
-	 */
-	public E saveOrUpdate(E entity, boolean audit) throws CommonException {
-		E newObj = null;
-		try {
-			newObj = this.getEntityManager().merge(entity);
-			this.getEntityManager().flush();
-		} catch (Exception e) {
-			this.logger.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			throw new CommonException("MESSAGE_INTERNAL_ERROR", e, "DAO-INTERNAL_SERVER_ERROR", "Ocorreu um erro na requisição - CDAO0001");
-		}
-		return newObj;
-	}
-
-	/**
 	 * {@inheritDoc}.
 	 */
 	@SuppressWarnings("unchecked")
@@ -295,9 +239,9 @@ public abstract class AbstractCommonDAO<E extends CommonBean> implements CommonD
 			StringBuilder jpaQl = new StringBuilder();
 			jpaQl.append(" SELECT entity FROM ");
 			jpaQl.append(getEntityClass().getName());
-			jpaQl.append(" entity WHERE entity.id= :listId ");
+			jpaQl.append(" entity WHERE entity.id= :ID ");
 			Query query = this.getEntityManager().createQuery(jpaQl.toString());
-			query.setParameter("listId", id);
+			query.setParameter("ID", id);
 			List<E> list = query.getResultList();
 			if(list.size() > 0){
 				return (E) list.get(0);
